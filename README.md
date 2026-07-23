@@ -12,8 +12,8 @@ logo-color.png                      → logo utama, untuk latar terang
 logo-white.png                      → logo putih, untuk latar merah/gelap
 Dayalima-Brand-Guideline.png        → cuplikan panduan brand internal (1 halaman)
 Dayalima-Company-Profile-2026.pdf   → company profile terbaru
-Dayalima-Template-Presentasi.pptx   → master template slide
-Dayalima-Brand-Kit.zip              → bundel semua file di atas jadi satu (untuk tombol "Unduh Brand Kit")
+Dayalima-Template-Presentasi.pptx   → master template slide (diunduh terpisah, tidak dibundel ke ZIP — lihat catatan di bawah)
+Dayalima-Brand-Kit.zip              → bundel logo + company profile + panduan brand (untuk tombol "Unduh Brand Kit")
 ```
 
 Semua path aset di `index.html` bersifat **relatif** — file-file ini wajib berada di root repo yang sama dengan `index.html` agar logo, preview, dan tombol download tetap berfungsi.
@@ -36,6 +36,8 @@ Semua path aset di `index.html` bersifat **relatif** — file-file ini wajib ber
 Karena semua path relatif dan mengacu ke nama file, update cukup dengan **replace file lama dengan nama yang sama**, lalu commit & push — tidak perlu menyentuh `index.html`.
 
 Pengecualian: `Dayalima-Brand-Kit.zip` **tidak otomatis ter-update**. Setiap kali salah satu aset di dalamnya berubah (logo baru, company profile edisi baru, dst), file ZIP ini harus di-generate ulang secara manual dan di-replace juga.
+
+**Kenapa PPTX tidak ikut dibundel ke ZIP:** ukuran file PPTX (~22MB) membuat total ZIP lebih dari 25MB, batas upload file lewat GitHub web UI (drag & drop browser). Kalau nanti PPTX perlu ikut dibundel, upload lewat `git push` dari command line atau GitHub Desktop (limit di situ ±100MB), bukan lewat browser.
 
 ## Kerangka isi halaman
 
