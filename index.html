@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dayalima Brand Hub — Aset Resmi untuk Seluruh Business Unit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red:#A21F21;
+    --red-dark:#6E1416;
+    --red-tint:#C1585A;
+    --gray-100:#F4F4F4;
+    --gray-200:#D9D9D9;
+    --gray-400:#B7B7B7;
+    --gray-600:#7A7A7A;
+    --ink:#201C1C;
+    --yellow:#FFCC05;
+    --white:#FFFFFF;
+    --radius:2px;
+    --ease:cubic-bezier(.2,.7,.2,1);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--white);
+    color:var(--ink);
+    font-family:'Montserrat',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Oswald',sans-serif;
+    text-transform:uppercase;
+    letter-spacing:-0.01em;
+    margin:0;
+    font-weight:700;
+    line-height:1.02;
+  }
+  .eyebrow{
+    font-family:'Montserrat',sans-serif;
+    font-weight:700;
+    font-size:11px;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--red);
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+  @media(max-width:640px){.wrap{padding:0 20px;}}
+
+  /* ---------- facet mark (signature element) ---------- */
+  .facet{
+    display:inline-block;
+    width:1em;height:1em;
+    position:relative;
+  }
+  .facet svg{width:100%;height:100%;display:block;}
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--gray-200);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    height:76px;
+  }
+  .nav-logo img{height:26px;width:auto;}
+  .nav-links{display:flex;gap:36px;align-items:center;}
+  .nav-links a{
+    font-size:12.5px;font-weight:600;letter-spacing:.04em;
+    text-transform:uppercase;color:var(--ink);
+    position:relative;padding:4px 0;
+    transition:color .2s var(--ease);
+  }
+  .nav-links a:hover{color:var(--red);}
+  .nav-links a::after{
+    content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--red);
+    transition:width .25s var(--ease);
+  }
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{
+    background:var(--red);color:var(--white)!important;
+    padding:11px 20px;font-size:12px;font-weight:700;
+    letter-spacing:.04em;text-transform:uppercase;
+    border-radius:var(--radius);
+  }
+  .nav-cta::after{display:none;}
+  .nav-cta:hover{background:var(--red-dark);}
+  .burger{display:none;background:none;border:0;cursor:pointer;padding:8px;}
+  .burger span{display:block;width:22px;height:2px;background:var(--ink);margin:5px 0;}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    overflow:hidden;
+    background:var(--ink);
+    color:var(--white);
+    padding:120px 0 96px;
+  }
+  .hero-facets{
+    position:absolute;inset:0;
+    opacity:.14;
+    pointer-events:none;
+  }
+  .hero-facets svg{width:100%;height:100%;}
+  .hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr .85fr;gap:64px;align-items:end;}
+  @media(max-width:900px){.hero-inner{grid-template-columns:1fr;}}
+  .hero h1{
+    font-size:clamp(40px,6.2vw,84px);
+    color:var(--white);
+  }
+  .hero h1 em{
+    font-style:normal;color:var(--red-tint);
+  }
+  .hero p.lead{
+    font-size:16.5px;line-height:1.65;color:#D8D2D2;
+    max-width:480px;margin-top:22px;
+  }
+  .hero-actions{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap;}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:15px 26px;font-size:12.5px;font-weight:700;
+    letter-spacing:.05em;text-transform:uppercase;
+    border-radius:var(--radius);
+    transition:all .22s var(--ease);
+    border:1.5px solid transparent;
+    cursor:pointer;
+  }
+  .btn-primary{background:var(--red);color:var(--white);}
+  .btn-primary:hover{background:var(--white);color:var(--red);}
+  .btn-ghost{border-color:rgba(255,255,255,.35);color:var(--white);}
+  .btn-ghost:hover{border-color:var(--white);background:rgba(255,255,255,.08);}
+  .btn-outline{border-color:var(--red);color:var(--red);}
+  .btn-outline:hover{background:var(--red);color:var(--white);}
+
+  .hero-side{
+    border-left:1px solid rgba(255,255,255,.18);
+    padding-left:36px;
+  }
+  @media(max-width:900px){.hero-side{border-left:0;border-top:1px solid rgba(255,255,255,.18);padding-left:0;padding-top:28px;}}
+  .hero-side .eyebrow{color:var(--yellow);}
+  .hero-side ul{list-style:none;margin:16px 0 0;padding:0;}
+  .hero-side li{
+    display:flex;gap:12px;align-items:flex-start;
+    padding:12px 0;border-bottom:1px solid rgba(255,255,255,.12);
+    font-size:14px;color:#EDE9E9;
+  }
+  .hero-side li:last-child{border-bottom:0;}
+  .hero-side .facet{flex-shrink:0;margin-top:2px;color:var(--red-tint);}
+
+  /* ---------- ticker bar ---------- */
+  .ticker{
+    background:var(--red);color:var(--white);
+    padding:13px 0;overflow:hidden;white-space:nowrap;
+  }
+  .ticker-track{display:inline-flex;animation:scroll 26s linear infinite;}
+  .ticker-track span{
+    font-family:'Oswald',sans-serif;font-weight:600;
+    font-size:13px;letter-spacing:.08em;text-transform:uppercase;
+    padding:0 28px;display:inline-flex;align-items:center;gap:10px;
+  }
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ---------- section shell ---------- */
+  section{padding:100px 0;}
+  .section-head{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    gap:24px;margin-bottom:52px;flex-wrap:wrap;
+  }
+  .section-head h2{font-size:clamp(28px,3.6vw,44px);}
+  .section-head p{
+    max-width:420px;color:var(--gray-600);font-size:14.5px;line-height:1.6;
+  }
+  .divider{height:1px;background:var(--gray-200);border:0;margin:0;}
+
+  /* ---------- identity quick-ref ---------- */
+  .identity-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:64px;}
+  @media(max-width:900px){.identity-grid{grid-template-columns:1fr;gap:48px;}}
+  .swatch-row{display:flex;gap:14px;margin-bottom:28px;}
+  .swatch{
+    flex:1;padding:20px 16px;border-radius:var(--radius);
+    color:var(--white);position:relative;overflow:hidden;
+    min-height:120px;display:flex;flex-direction:column;justify-content:space-between;
+  }
+  .swatch .pct{font-family:'Oswald',sans-serif;font-size:26px;font-weight:700;}
+  .swatch .name{font-size:11px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;opacity:.9;}
+  .swatch .hex{font-size:11px;font-family:monospace;opacity:.75;margin-top:10px;}
+  .swatch.c1{background:var(--red);flex:2;}
+  .swatch.c2{background:var(--gray-200);color:var(--ink);}
+  .swatch.c3{background:var(--yellow);color:var(--ink);flex:.6;}
+
+  .type-sample{
+    border:1px solid var(--gray-200);border-radius:var(--radius);
+    padding:26px 24px;margin-bottom:14px;
+  }
+  .type-sample .tag{font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-600);}
+  .type-sample .glyph{font-family:'Oswald',sans-serif;font-weight:700;font-size:30px;margin-top:8px;text-transform:uppercase;}
+  .type-sample.body-face .glyph{font-family:'Montserrat',sans-serif;font-weight:700;text-transform:none;font-size:20px;}
+
+  .identity-note{
+    background:var(--gray-100);border-left:3px solid var(--red);
+    padding:18px 22px;font-size:13.5px;line-height:1.6;color:var(--ink);margin-top:24px;
+  }
+
+  /* ---------- logo kit ---------- */
+  .logo-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+  @media(max-width:760px){.logo-grid{grid-template-columns:1fr;}}
+  .logo-card{
+    border:1px solid var(--gray-200);border-radius:var(--radius);
+    overflow:hidden;background:var(--white);
+    transition:box-shadow .25s var(--ease),transform .25s var(--ease);
+  }
+  .logo-card:hover{box-shadow:0 18px 40px -18px rgba(0,0,0,.18);transform:translateY(-3px);}
+  .logo-stage{
+    height:220px;display:flex;align-items:center;justify-content:center;
+    padding:36px;
+  }
+  .logo-stage.on-light{background:var(--gray-100);}
+  .logo-stage.on-dark{background:var(--red);}
+  .logo-stage img{max-height:64px;width:auto;}
+  .logo-meta{
+    padding:22px 24px;display:flex;align-items:center;justify-content:space-between;
+    border-top:1px solid var(--gray-200);gap:16px;
+  }
+  .logo-meta h3{font-size:16px;}
+  .logo-meta p{margin:6px 0 0;font-size:12.5px;color:var(--gray-600);}
+  .dl-btn{
+    flex-shrink:0;
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--ink);color:var(--white);
+    padding:11px 18px;font-size:11.5px;font-weight:700;
+    letter-spacing:.04em;text-transform:uppercase;border-radius:var(--radius);
+    transition:background .2s var(--ease);
+  }
+  .dl-btn:hover{background:var(--red);}
+  .dl-btn svg{width:13px;height:13px;}
+
+  /* ---------- resources ---------- */
+  .res-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  @media(max-width:900px){.res-grid{grid-template-columns:1fr;}}
+  .res-card{
+    border:1px solid var(--gray-200);border-radius:var(--radius);
+    padding:30px 26px;display:flex;flex-direction:column;height:100%;
+    transition:border-color .2s var(--ease),transform .25s var(--ease),box-shadow .25s var(--ease);
+  }
+  .res-card:hover{border-color:var(--red);transform:translateY(-3px);box-shadow:0 18px 40px -20px rgba(0,0,0,.15);}
+  .res-icon{
+    width:42px;height:42px;border-radius:50%;
+    background:var(--gray-100);display:flex;align-items:center;justify-content:center;
+    color:var(--red);margin-bottom:22px;
+  }
+  .res-card h3{font-size:19px;margin-bottom:8px;}
+  .res-card .filetype{font-size:11px;font-weight:700;letter-spacing:.06em;color:var(--red);text-transform:uppercase;margin-bottom:14px;}
+  .res-card p{font-size:13.5px;color:var(--gray-600);line-height:1.6;flex-grow:1;}
+  .res-card .dl-btn{margin-top:22px;align-self:flex-start;}
+
+  /* ---------- vendor spotlight (Pameo) ---------- */
+  .vendor-section{
+    background:var(--ink);color:var(--white);
+    position:relative;overflow:hidden;
+  }
+  .vendor-grid{
+    display:grid;grid-template-columns:1.15fr .85fr;gap:64px;align-items:center;
+  }
+  @media(max-width:900px){.vendor-grid{grid-template-columns:1fr;}}
+  .vendor-copy h2{font-size:clamp(28px,4vw,46px);color:var(--white);}
+  .vendor-copy h2 em{font-style:normal;color:var(--yellow);}
+  .vendor-copy .lead{color:#D8D2D2;max-width:480px;}
+  .vendor-note{
+    margin-top:18px;font-size:12px;color:var(--gray-400);
+  }
+  .vendor-card{
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:var(--radius);
+    padding:36px 32px;
+    background:rgba(255,255,255,.03);
+  }
+  .vendor-wordmark{
+    font-family:'Oswald',sans-serif;font-weight:700;font-size:34px;
+    letter-spacing:.02em;color:var(--white);
+  }
+  .vendor-tag{
+    font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--yellow);font-weight:700;margin:6px 0 26px;
+  }
+  .vendor-services{list-style:none;margin:0 0 26px;padding:0;}
+  .vendor-services li{
+    display:flex;align-items:center;gap:12px;
+    padding:11px 0;border-bottom:1px solid rgba(255,255,255,.1);
+    font-size:13.5px;color:#EDE9E9;
+  }
+  .vendor-services li:last-child{border-bottom:0;}
+  .vendor-services .facet{width:14px;height:14px;color:var(--yellow);flex-shrink:0;}
+  .vendor-badge{
+    display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--ink);background:var(--yellow);
+    padding:8px 14px;border-radius:var(--radius);
+  }
+
+  /* ---------- guideline snapshot ---------- */
+  .guide-section{background:var(--gray-100);}
+  .guide-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center;}
+  @media(max-width:900px){.guide-grid{grid-template-columns:1fr;}}
+  .guide-frame{
+    border-radius:var(--radius);overflow:hidden;border:1px solid var(--gray-200);
+    box-shadow:0 30px 60px -30px rgba(0,0,0,.25);
+    background:var(--white);
+  }
+  .rules-list{list-style:none;margin:0;padding:0;}
+  .rules-list li{
+    display:flex;gap:16px;padding:18px 0;border-bottom:1px solid var(--gray-200);
+  }
+  .rules-list li:first-child{padding-top:0;}
+  .rules-list .facet{color:var(--red);width:18px;height:18px;flex-shrink:0;margin-top:2px;}
+  .rules-list strong{font-size:14.5px;display:block;margin-bottom:4px;}
+  .rules-list span{font-size:13px;color:var(--gray-600);line-height:1.55;}
+
+  /* ---------- BU strip ---------- */
+  .bu-strip{
+    display:flex;align-items:center;justify-content:space-between;
+    flex-wrap:wrap;gap:20px;
+    padding:30px 0;border-top:1px solid var(--gray-200);border-bottom:1px solid var(--gray-200);
+  }
+  .bu-strip .label{font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gray-600);}
+  .bu-names{display:flex;gap:28px;flex-wrap:wrap;}
+  .bu-names span{
+    font-family:'Oswald',sans-serif;font-size:13.5px;letter-spacing:.03em;
+    text-transform:uppercase;color:var(--ink);font-weight:500;
+  }
+
+  /* ---------- CTA ---------- */
+  .cta-band{
+    background:var(--red);color:var(--white);
+    padding:90px 0;text-align:center;position:relative;overflow:hidden;
+  }
+  .cta-band h2{font-size:clamp(30px,4.6vw,52px);color:var(--white);max-width:720px;margin:0 auto;}
+  .cta-band p{color:#F1D9D9;font-size:15px;margin:18px 0 34px;}
+  .cta-band .btn-primary{background:var(--white);color:var(--red);}
+  .cta-band .btn-primary:hover{background:var(--ink);color:var(--white);}
+
+  /* ---------- footer ---------- */
+  footer{padding:64px 0 40px;}
+  .foot-top{
+    display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:40px;padding-bottom:48px;
+  }
+  @media(max-width:760px){.foot-top{grid-template-columns:1fr 1fr;}}
+  .foot-top img{height:24px;margin-bottom:16px;}
+  .foot-top p{font-size:13px;color:var(--gray-600);line-height:1.6;max-width:280px;}
+  .foot-col h4{
+    font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--gray-600);margin-bottom:16px;
+  }
+  .foot-col a{display:block;font-size:13.5px;padding:6px 0;color:var(--ink);transition:color .2s;}
+  .foot-col a:hover{color:var(--red);}
+  .foot-bottom{
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
+    padding-top:28px;border-top:1px solid var(--gray-200);
+    font-size:12px;color:var(--gray-600);
+  }
+
+  @media(max-width:900px){
+    .nav-links{display:none;}
+    .burger{display:block;}
+    section{padding:72px 0;}
+  }
+</style>
+</head>
+<body>
+
+<!-- inline sprite defs for the facet mark -->
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="facet-mark" viewBox="0 0 100 100">
+    <polygon points="50,2 90,32 50,50" fill="currentColor" opacity=".55"/>
+    <polygon points="50,2 10,32 50,50" fill="currentColor" opacity=".85"/>
+    <polygon points="10,32 50,50 22,70" fill="currentColor" opacity=".7"/>
+    <polygon points="90,32 50,50 78,70" fill="currentColor" opacity=".4"/>
+    <polygon points="50,50 22,70 50,98" fill="currentColor" opacity=".95"/>
+    <polygon points="50,50 78,70 50,98" fill="currentColor" opacity=".65"/>
+  </symbol>
+</svg>
+
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="nav-logo"><img src="logo-color.png" alt="Dayalima"></a>
+    <nav class="nav-links">
+      <a href="#identitas">Identitas Brand</a>
+      <a href="#logo-kit">Logo Kit</a>
+      <a href="#dokumen">Template &amp; Dokumen</a>
+      <a href="#vendor">Rekan Desain</a>
+      <a href="#panduan">Panduan Lengkap</a>
+      <a href="Dayalima-Brand-Kit.zip" download class="nav-cta">Unduh Semua</a>
+    </nav>
+    <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-facets" aria-hidden="true">
+    <svg viewBox="0 0 1200 700" preserveAspectRatio="xMaxYMid slice">
+      <use href="#facet-mark" width="480" height="480" x="760" y="120" color="#A21F21"/>
+      <use href="#facet-mark" width="220" height="220" x="1020" y="460" color="#FFCC05"/>
+    </svg>
+  </div>
+  <div class="wrap hero-inner">
+    <div>
+      <p class="eyebrow">Dayalima Group · Brand Hub</p>
+      <h1>Satu brand.<br><em>Setiap sisi</em><br>Dayalima Group.</h1>
+      <p class="lead">Panduan identitas, logo, template proposal, dan company profile resmi — dalam satu tempat, siap dipakai oleh seluruh business unit tanpa perlu tanya-tanya lagi ke tim marketing.</p>
+      <div class="hero-actions">
+        <a href="Dayalima-Brand-Kit.zip" download class="btn btn-primary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 3v13m0 0-5-5m5 5 5-5M4 21h16"/></svg>
+          Unduh Brand Kit
+        </a>
+        <a href="#panduan" class="btn btn-ghost">Lihat Panduan Brand</a>
+      </div>
+    </div>
+    <div class="hero-side">
+      <p class="eyebrow">Tersedia di halaman ini</p>
+      <ul>
+        <li><span class="facet"><svg viewBox="0 0 100 100"><use href="#facet-mark"/></svg></span>Warna, tipografi &amp; aturan pakai logo</li>
+        <li><span class="facet"><svg viewBox="0 0 100 100"><use href="#facet-mark"/></svg></span>Logo utama, variasi, &amp; favicon — format PNG</li>
+        <li><span class="facet"><svg viewBox="0 0 100 100"><use href="#facet-mark"/></svg></span>Template presentasi (.pptx) siap edit</li>
+        <li><span class="facet"><svg viewBox="0 0 100 100"><use href="#facet-mark"/></svg></span>Company Profile 2026 (.pdf) terbaru</li>
+        <li><span class="facet"><svg viewBox="0 0 100 100"><use href="#facet-mark"/></svg></span>Kontak vendor desain resmi, Pameo</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>People Strategies &amp; Performance Activation</span>
+    <span>·</span>
+    <span>Satu Standar Brand</span>
+    <span>·</span>
+    <span>Untuk Semua Business Unit</span>
+    <span>·</span>
+    <span>People Strategies &amp; Performance Activation</span>
+    <span>·</span>
+    <span>Satu Standar Brand</span>
+    <span>·</span>
+    <span>Untuk Semua Business Unit</span>
+    <span>·</span>
+  </div>
+</div>
+
+<section id="identitas">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Identitas dalam<br>sekali lihat.</h2>
+      <p>Referensi cepat warna dan tipografi resmi Dayalima. Untuk aturan lengkap — rasio pakai, clear space, dan variasi logo — lihat Panduan Brand Internal.</p>
+    </div>
+    <div class="identity-grid">
+      <div>
+        <p class="eyebrow" style="margin-bottom:16px;">Palet Warna</p>
+        <div class="swatch-row">
+          <div class="swatch c1">
+            <div><div class="pct">60%</div><div class="name">Primer</div></div>
+            <div class="hex">#A21F21</div>
+          </div>
+          <div class="swatch c2">
+            <div><div class="pct">30%</div><div class="name">Sekunder</div></div>
+            <div class="hex">#D9D9D9</div>
+          </div>
+          <div class="swatch c3">
+            <div><div class="pct">10%</div><div class="name">Aksen</div></div>
+            <div class="hex">#FFCC05</div>
+          </div>
+        </div>
+        <div class="identity-note">
+          Gunakan proporsi <strong>60/30/10</strong> di setiap materi — merah primer sebagai dominan, abu-abu sebagai penyeimbang, kuning hanya sebagai aksen kecil (highlight angka, ikon, atau CTA).
+        </div>
+      </div>
+      <div>
+        <p class="eyebrow" style="margin-bottom:16px;">Tipografi</p>
+        <div class="type-sample">
+          <div class="tag">Typeface Utama — Headline</div>
+          <div class="glyph">TStar Pro Bold</div>
+        </div>
+        <div class="type-sample body-face">
+          <div class="tag">Typeface Sekunder — Body &amp; Slide</div>
+          <div class="glyph">Montserrat</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="logo-kit">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Logo Kit</h2>
+      <p>Dua versi resmi logo Dayalima. Pilih sesuai warna latar materi kamu — jangan mengubah warna, proporsi, atau menambahkan efek pada logo.</p>
+    </div>
+    <div class="logo-grid">
+      <div class="logo-card">
+        <div class="logo-stage on-light"><img src="logo-color.png" alt="Logo Dayalima versi warna"></div>
+        <div class="logo-meta">
+          <div>
+            <h3>Logo Utama</h3>
+            <p>Untuk latar terang / putih · PNG</p>
+          </div>
+          <a class="dl-btn" href="logo-color.png" download="Dayalima-Logo-Utama.png">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 3v13m0 0-5-5m5 5 5-5M4 21h16"/></svg>
+            PNG
+          </a>
+        </div>
+      </div>
+      <div class="logo-card">
+        <div class="logo-stage on-dark"><img src="logo-white.png" alt="Logo Dayalima versi putih"></div>
+        <div class="logo-meta">
+          <div>
+            <h3>Logo Putih</h3>
+            <p>Untuk latar merah / gelap · PNG</p>
+          </div>
+          <a class="dl-btn" href="logo-white.png" download="Dayalima-Logo-Putih.png">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 3v13m0 0-5-5m5 5 5-5M4 21h16"/></svg>
+            PNG
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><hr class="divider"></div>
+
+<section id="dokumen">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Template &amp; Dokumen</h2>
+      <p>File siap pakai untuk kebutuhan presentasi, proposal, dan perkenalan perusahaan ke klien atau mitra.</p>
+    </div>
+    <div class="res-grid">
+      <div class="res-card">
+        <div class="res-icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="1"/><path d="M3 9h18M8 4v14"/></svg></div>
+        <div class="filetype">.PPTX</div>
+        <h3>Template Presentasi</h3>
+        <p>Master slide resmi dengan layout cover, konten, data, dan penutup — mengikuti sistem grid dan warna brand.</p>
+        <a class="dl-btn" href="Dayalima-Template-Presentasi.pptx" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 3v13m0 0-5-5m5 5 5-5M4 21h16"/></svg>
+          Unduh
+        </a>
+      </div>
+      <div class="res-card">
+        <div class="res-icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 3h8l4 4v14H7z"/><path d="M15 3v4h4"/></svg></div>
+        <div class="filetype">.PDF</div>
+        <h3>Company Profile 2026</h3>
+        <p>Dokumen perkenalan perusahaan terbaru — profil, sistem PPAS™, hasil klien, dan jejak rekam 27+ tahun Dayalima.</p>
+        <a class="dl-btn" href="Dayalima-Company-Profile-2026.pdf" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 3v13m0 0-5-5m5 5 5-5M4 21h16"/></svg>
+          Unduh
+        </a>
+      </div>
+      <div class="res-card">
+        <div class="res-icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg></div>
+        <div class="filetype">.PNG</div>
+        <h3>Panduan Brand Internal</h3>
+        <p>Referensi satu halaman: logo, warna, tipografi, dan contoh penerapan pada presentasi &amp; media sosial.</p>
+        <a class="dl-btn" href="Dayalima-Brand-Guideline.png" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 3v13m0 0-5-5m5 5 5-5M4 21h16"/></svg>
+          Unduh
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="vendor-section" id="vendor">
+  <div class="wrap vendor-grid">
+    <div class="vendor-copy">
+      <p class="eyebrow" style="color:var(--yellow);">Rekan Desain Resmi</p>
+      <h2>Butuh desain<br>di luar template ini?<br><em>Kenalan sama Pameo.</em></h2>
+      <p class="lead">Pameo adalah vendor desain resmi yang bisa dipakai seluruh business unit Dayalima Group — untuk konten media sosial, flyer, proposal, sampai laporan tahunan. Semua tetap mengacu ke standar brand di halaman ini.</p>
+      <div class="hero-actions">
+        <a href="#" class="btn btn-primary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M7 7h10v10"/></svg>
+          Lihat Portofolio Pameo
+        </a>
+        <a href="#" class="btn btn-ghost">Ajukan Request Desain</a>
+      </div>
+      <p class="vendor-note">Link portofolio &amp; formulir request akan segera diperbarui oleh tim Marketing.</p>
+    </div>
+    <div class="vendor-card">
+      <div class="vendor-wordmark">PAMEO</div>
+      <p class="vendor-tag">Design Partner</p>
+      <ul class="vendor-services">
+        <li><span class="facet"><svg viewBox="0 0 100 100"><use href="#facet-mark"/></svg></span>Konten Media Sosial</li>
+        <li><span class="facet"><svg viewBox="0 0 100 100"><use href="#facet-mark"/></svg></span>Flyer &amp; Materi Event</li>
+        <li><span class="facet"><svg viewBox="0 0 100 100"><use href="#facet-mark"/></svg></span>Proposal &amp; Deck Klien</li>
+        <li><span class="facet"><svg viewBox="0 0 100 100"><use href="#facet-mark"/></svg></span>Laporan &amp; Report Tahunan</li>
+      </ul>
+      <span class="vendor-badge">Tersedia untuk semua BU</span>
+    </div>
+  </div>
+</section>
+
+<section class="guide-section" id="panduan">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Sebelum kamu pakai,<br>3 aturan ini wajib dicek.</h2>
+    </div>
+    <div class="guide-grid">
+      <div class="guide-frame">
+        <img src="Dayalima-Brand-Guideline.png" alt="Cuplikan Panduan Brand Internal Dayalima">
+      </div>
+      <ul class="rules-list">
+        <li>
+          <span class="facet"><svg viewBox="0 0 100 100"><use href="#facet-mark"/></svg></span>
+          <div><strong>Jaga clear space &amp; proporsi logo</strong><span>Jangan meregangkan, memutar, atau menambahkan bayangan/efek pada logo dan simbol facet merah.</span></div>
+        </li>
+        <li>
+          <span class="facet"><svg viewBox="0 0 100 100"><use href="#facet-mark"/></svg></span>
+          <div><strong>Pakai rasio warna 60/30/10</strong><span>Merah primer mendominasi, abu-abu sebagai penyeimbang, kuning hanya untuk aksen — bukan warna utama.</span></div>
+        </li>
+        <li>
+          <span class="facet"><svg viewBox="0 0 100 100"><use href="#facet-mark"/></svg></span>
+          <div><strong>Konsisten di semua materi BU</strong><span>Presentasi, proposal, dan konten sosial setiap unit bisnis mengikuti sistem tipografi &amp; grid yang sama.</span></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="bu-strip">
+    <span class="label">Dipakai bersama oleh</span>
+    <div class="bu-names">
+      <span>Dayalima Group</span>
+      <span>DaDI</span>
+      <span>DayaSkill</span>
+      <span>DayaCircle</span>
+      <span>Klobility</span>
+      <span>Klob</span>
+    </div>
+  </div>
+</div>
+
+<section class="cta-band" id="kontak">
+  <div class="wrap">
+    <p class="eyebrow" style="color:var(--yellow);">Butuh aset lain?</p>
+    <h2>Semua tim Dayalima,<br>satu sumber brand yang sama.</h2>
+    <p>Tidak menemukan file yang kamu butuhkan? Hubungi tim Marketing Dayalima Group.</p>
+    <a href="mailto:marketing@dayalima.com" class="btn btn-primary">Hubungi Tim Marketing</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <img src="logo-color.png" alt="Dayalima">
+        <p>People Strategies &amp; Performance Activation. Sistem identitas resmi untuk seluruh business unit Dayalima Group.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Halaman</h4>
+        <a href="#identitas">Identitas Brand</a>
+        <a href="#logo-kit">Logo Kit</a>
+        <a href="#dokumen">Template &amp; Dokumen</a>
+        <a href="#panduan">Panduan Lengkap</a>
+      </div>
+      <div class="foot-col">
+        <h4>Kantor</h4>
+        <a href="#">Alamanda Tower 23F, Jakarta</a>
+        <a href="#">Pakuwon Center 17F, Surabaya</a>
+      </div>
+      <div class="foot-col">
+        <h4>Kontak</h4>
+        <a href="#">Marketing Dayalima Group</a>
+        <a href="#">brand.dayalima.app</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Dayalima Group. Nama dan logo Dayalima adalah merek dagang terdaftar.</span>
+      <span>Brand Hub v1.0</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const burger = document.querySelector('.burger');
+  const navLinks = document.querySelector('.nav-links');
+  burger.addEventListener('click', () => {
+    const open = navLinks.style.display === 'flex';
+    navLinks.style.display = open ? 'none' : 'flex';
+    navLinks.style.cssText += open ? '' : 'position:fixed;top:76px;left:0;right:0;background:#fff;flex-direction:column;padding:24px 20px;gap:0;border-bottom:1px solid #D9D9D9;';
+    if(!open){
+      navLinks.querySelectorAll('a').forEach(a=>a.style.cssText='padding:14px 0;width:100%;border-bottom:1px solid #eee;');
+    }
+  });
+</script>
+
+</body>
+</html>
